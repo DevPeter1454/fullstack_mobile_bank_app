@@ -162,7 +162,7 @@ class _SignupState extends State<Signup> {
                               if (_email.text.isEmpty ||
                                   _password.text.isEmpty ||
                                   _firstname.text.isEmpty ||
-                                  _lastname.text.isEmpty) {
+                                  _lastname.text.isEmpty || imgUrl.isEmpty) {
                                 showDialog(
                                   barrierDismissible: false,
                                   context: context,
