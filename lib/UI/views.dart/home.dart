@@ -87,6 +87,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
           if (result['data']['status'] == 'success') {
             var amount = (result['data']['amount'] / 100).toString();
             var data = await Auth().fundAccount(user!.email, amount) as Map;
+            
             if (data['message'] == 'User funded successfully') {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(

@@ -19,7 +19,7 @@ class Auth {
       'password': user['password'],
       'accountNumber': user['accountNo'],
       'accountBalance': user['balance'],
-      'imgUrl': user['imgUrl'],
+      'imgage': user['imgUrl'],
     };
     http.Response data = await http.post(signUp, body: userData);
     print(json.decode(data.body));
@@ -90,6 +90,13 @@ class Auth {
     var url = Uri.parse('https://litcon-bank.herokuapp.com/user/transfer/recipients/$accountNumber');
     http.Response response = await http.get(url);
     print(json.decode(response.body));
+    return json.decode(response.body);
+  }
+
+  getTransactions(accountNumber)async{
+    var url = Uri.parse('https://litcon-bank.herokuapp.com/user/get/transactions/$accountNumber/$accountNumber');
+    http.Response response = await http.get(url);
+    // print(json.decode(response.body));
     return json.decode(response.body);
   }
 }

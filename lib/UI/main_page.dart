@@ -35,7 +35,7 @@ class _MainPageState extends State<MainPage> {
       Home(user: user),
       Wallet(user: user),
       const Profile(),
-      const Transactions(),
+     Transactions(user: user),
       const Settings(),
     ];
     return Scaffold(
