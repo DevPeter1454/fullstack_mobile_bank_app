@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api, must_be_immutable, use_build_context_synchronously
 
 import 'package:frontend/Auth/apib.dart';
+import 'package:frontend/constants/constants.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +88,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
           if (result['data']['status'] == 'success') {
             var amount = (result['data']['amount'] / 100).toString();
             var data = await Auth().fundAccount(user!.email, amount) as Map;
-            
+
             if (data['message'] == 'User funded successfully') {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
@@ -142,11 +143,12 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
     return process
         ? const Loading()
         : Scaffold(
-            backgroundColor: Colors.grey[200],
+            backgroundColor: MyColors.colorC,
             appBar: AppBar(
               title: const Text('Dashboard'),
               leading: const SizedBox.shrink(),
               elevation: 0,
+              backgroundColor: MyColors.colorD,
             ),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -158,7 +160,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                     "Welcome back ${user!.firstname} ${user!.lastname} ",
                     style: const TextStyle(
                       fontSize: 18,
-                      color: Color(0XFF3523A9),
+                      color: MyColors.colorB,
                     ),
                   ),
                 ),
@@ -170,9 +172,9 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                         width: MediaQuery.of(context).size.width / 1.2,
                         decoration: const BoxDecoration(
                           gradient: LinearGradient(colors: [
-                            Color(0XFF1C97EB),
-                            Colors.blue,
-                            Color(0XFF3523A9),
+                            Color(0XFFEC4420),
+                            Color(0XFFED4D23),
+                            Color(0XFFEA251F),
                           ]),
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
@@ -213,9 +215,11 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                   children: [
                     GestureDetector(
                       onTap: () async {
-                        var result = await Navigator.pushNamed(context, '/transfer', arguments: {
-                          'user': user,
-                        });
+                        var result = await Navigator.pushNamed(
+                            context, '/transfer',
+                            arguments: {
+                              'user': user,
+                            });
                         // Navigator.pop(context);
                         Future.delayed(const Duration(seconds: 1), () {
                           getUser();

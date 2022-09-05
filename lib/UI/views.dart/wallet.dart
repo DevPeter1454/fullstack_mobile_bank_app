@@ -33,13 +33,10 @@ class _WalletState extends State<Wallet> {
       var result = await UserWallet().getUserWallets(user!.accountNo) as Map;
       var list = result['wallet'] as List;
       _wallets.clear();
-      list.forEach((element) {
+      for (var element in list) {
         _wallets.add(Wallets.fromMap(element));
-        // print(element['_id']);
-      });
-      // print('$_wallets list');
+      }
       setState(() {
-        // _wallets = list.map((i) => Wallets.fromMap(i)).toList();
       });
     }
   }
@@ -49,17 +46,16 @@ class _WalletState extends State<Wallet> {
     super.initState();
     // user = widget.user;
     getUser();
-    print(user);
+    // print(user);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      // backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: const Text('Wallet'),
         centerTitle: true,
-        backgroundColor: Colors.grey[850],
       ),
       body: _wallets.isEmpty
           ? const Center(

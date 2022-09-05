@@ -46,7 +46,7 @@ class _TransactionsState extends State<Transactions> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[200],
+        // backgroundColor: Colors.grey[200],
         body:  userTransactions.isEmpty ? const Center(child: Text('No transactions found')):ListView.builder(
             itemCount: userTransactions.length,
             itemBuilder: (BuildContext context, index) {

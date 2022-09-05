@@ -67,7 +67,7 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Loading()
+        ? const Loading()
         : Scaffold(
             backgroundColor: MyColors.colorB,
             body: SingleChildScrollView(
@@ -80,7 +80,7 @@ class _SignupState extends State<Signup> {
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height * 0.9,
                       decoration: const BoxDecoration(
-                        color: Colors.white,
+                        color: MyColors.colorD,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(60),
                           topRight: Radius.circular(60),
@@ -131,7 +131,7 @@ class _SignupState extends State<Signup> {
                                 decoration: const InputDecoration(
                                   labelText: 'Password',
                                   labelStyle: TextStyle(
-                                    color: Color(0XFF2C7AE2),
+                                    color: MyColors.colorA,
                                     fontSize: 15,
                                   ),
                                 ),
@@ -265,12 +265,14 @@ class _SignupState extends State<Signup> {
                             },
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStateProperty.all(Colors.blueAccent),
+                                  MaterialStateProperty.all(MyColors.colorA),
                               minimumSize: MaterialStateProperty.all(Size(
                                   MediaQuery.of(context).size.width * 0.6, 50)),
                             ),
                             child: imgUploaded
-                                ? CircularProgressIndicator()
+                                ? const CircularProgressIndicator(
+                                  backgroundColor: Colors.white,
+                                )
                                 : imgDone
                                     ? const Text('Complete Sign Up process')
                                     : const Text(' Start Sign Up process'),
@@ -284,7 +286,7 @@ class _SignupState extends State<Signup> {
                               const Text(
                                 'Already have an account?',
                                 style: TextStyle(
-                                  color: Color.fromARGB(255, 2, 68, 155),
+                                  color: MyColors.colorA,
                                   fontSize: 15,
                                 ),
                               ),
@@ -298,7 +300,7 @@ class _SignupState extends State<Signup> {
                                 child: const Text(
                                   'Login',
                                   style: TextStyle(
-                                    color: Colors.amber,
+                                    color: MyColors.colorB,
                                     fontSize: 15,
                                   ),
                                 ),

@@ -6,6 +6,7 @@ import 'package:frontend/UI/views.dart/profile.dart';
 import 'package:frontend/UI/views.dart/settings.dart';
 import 'package:frontend/UI/views.dart/transactions.dart';
 import 'package:frontend/UI/views.dart/wallet.dart';
+import 'package:frontend/constants/constants.dart';
 
 class MainPage extends StatefulWidget {
   dynamic user;
@@ -39,7 +40,7 @@ class _MainPageState extends State<MainPage> {
       const Settings(),
     ];
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: MyColors.colorC,
       body: PageView.builder(
         controller: _pager,
         itemBuilder: (context, index) {
@@ -57,7 +58,7 @@ class _MainPageState extends State<MainPage> {
         onPressed: () {
           _pager.jumpToPage(2);
         },
-        backgroundColor: _currentIndex == 2 ? Colors.red : Colors.blue,
+        backgroundColor: _currentIndex == 2 ? MyColors.colorB : MyColors.colorA,
         child: const Icon(Icons.person),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -65,8 +66,8 @@ class _MainPageState extends State<MainPage> {
         activeIndex: _bottomIndex,
         activeColor:
             _currentIndex == _bottomIndex || _currentIndex > _bottomIndex
-                ? Colors.blue
-                : Colors.black,
+                ? MyColors.colorB
+                : MyColors.colorA,
         gapLocation: GapLocation.center,
         notchSmoothness: NotchSmoothness.verySmoothEdge,
         leftCornerRadius: 32,

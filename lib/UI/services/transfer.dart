@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:frontend/Auth/api.dart';
 import 'package:frontend/Models/user_model.dart';
 import 'package:frontend/constants/clip.dart';
+import 'package:frontend/constants/constants.dart';
 import 'package:shimmer/shimmer.dart';
 
 class Transfer extends StatefulWidget {
@@ -46,10 +47,11 @@ class _TransferState extends State<Transfer> {
     received = ModalRoute.of(context)!.settings.arguments as Map;
     user = received['user'];
     return Scaffold(
+        backgroundColor: MyColors.colorD,
         appBar: AppBar(
           // title: const Text('Transfer'),
 
-          backgroundColor: Colors.blue,
+          backgroundColor: MyColors.colorB,
           elevation: 0,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -71,8 +73,10 @@ class _TransferState extends State<Transfer> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Colors.blue,
-                        Colors.blueAccent,
+                        Color(0XFFEC4420),
+                        Color(0XFFED4D23),
+                        Color(0XFFEA251F),
+
                       ],
                     ),
                   ),
@@ -137,7 +141,6 @@ class _TransferState extends State<Transfer> {
                 child: TextField(
                   controller: _amount,
                   inputFormatters: [
-                    
                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                   ],
                   decoration: const InputDecoration(
@@ -196,38 +199,42 @@ class _TransferState extends State<Transfer> {
                             ),
                             actions: [
                               ElevatedButton(
-                                  onPressed: () async{
+                                  onPressed: () async {
                                     if (_password.text.isNotEmpty &&
                                         _password.text == user!.password) {
-                                      var result = await Auth().transfer(user!.accountNo.toString(), _receiver.text, _amount.text.toString());
-                                      if(result['message'] == 'Transfer successful'){
+                                      var result = await Auth().transfer(
+                                          user!.accountNo.toString(),
+                                          _receiver.text,
+                                          _amount.text.toString());
+                                      if (result['message'] ==
+                                          'Transfer successful') {
                                         Navigator.pop(context);
                                         _amount.clear();
                                         _receiver.clear();
                                         _password.clear();
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(
-                                              content: Text(result['message']),
-                                              duration: const Duration(seconds: 2),
-                                            ));
-                                      }else{
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text(result['message']),
+                                          duration: const Duration(seconds: 2),
+                                        ));
+                                      } else {
                                         Navigator.pop(context);
                                         _amount.clear();
                                         _receiver.clear();
                                         _password.clear();
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(
-                                              content: Text(result['message']),
-                                              duration: const Duration(seconds: 2),
-                                            ));
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text(result['message']),
+                                          duration: const Duration(seconds: 2),
+                                        ));
                                       }
-                                    }else{
+                                    } else {
                                       Navigator.pop(context);
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                          const SnackBar(
-                                            content: Text('Password Incorrect'),
-                                            duration: Duration(seconds: 2),
-                                          ));
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                        content: Text('Password Incorrect'),
+                                        duration: Duration(seconds: 2),
+                                      ));
                                     }
                                   },
                                   child: const Text('Confirm')),
@@ -236,6 +243,12 @@ class _TransferState extends State<Transfer> {
                         }));
                   }
                 },
+                style: ElevatedButton.styleFrom(
+                  primary: MyColors.colorB,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
                 child: const Text('Transfer'),
               ),
             ])));

@@ -23,7 +23,7 @@ class _SigininState extends State<Siginin> {
     return loading
         ? Loading()
         : Scaffold(
-            backgroundColor: const Color(0XFF2C7AE2),
+            backgroundColor: MyColors.colorB,
             body: Column(children: <Widget>[
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.2,
@@ -32,7 +32,7 @@ class _SigininState extends State<Siginin> {
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height * 0.8,
                   decoration: const BoxDecoration(
-                    color: Colors.white,
+                    color: MyColors.colorD,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(60),
                       topRight: Radius.circular(60),
@@ -62,7 +62,7 @@ class _SigininState extends State<Siginin> {
                             decoration: const InputDecoration(
                               labelText: 'Password',
                               labelStyle: TextStyle(
-                                color: Color(0XFF2C7AE2),
+                                color: MyColors.colorA,
                                 fontSize: 15,
                               ),
                             ),
@@ -117,7 +117,7 @@ class _SigininState extends State<Siginin> {
                               await Auth().signin(user).then((value) {
                                 if (value != null) {
                                   setState(() {
-                                   data = value as Map;
+                                    data = value as Map;
                                     loading = false;
                                   });
                                   print(data);
@@ -151,7 +151,6 @@ class _SigininState extends State<Siginin> {
                                         MaterialPageRoute(builder: ((context) {
                                       return MainPage(user: user);
                                     })));
-                                    
                                   }
                                 }
                               });
@@ -160,7 +159,7 @@ class _SigininState extends State<Siginin> {
                         },
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.blueAccent),
+                              MaterialStateProperty.all(MyColors.colorA),
                           minimumSize: MaterialStateProperty.all(Size(
                               MediaQuery.of(context).size.width * 0.6, 50)),
                         ),
@@ -175,7 +174,7 @@ class _SigininState extends State<Siginin> {
                           const Text(
                             'Don\'t have an account yet?',
                             style: TextStyle(
-                              color: Color.fromARGB(255, 2, 68, 155),
+                              color: MyColors.colorA,
                               fontSize: 15,
                             ),
                           ),
@@ -189,7 +188,7 @@ class _SigininState extends State<Siginin> {
                             child: const Text(
                               'Sign up',
                               style: TextStyle(
-                                color: Colors.amber,
+                                color: MyColors.colorB,
                                 fontSize: 15,
                               ),
                             ),

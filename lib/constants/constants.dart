@@ -22,4 +22,5 @@ class MyColors {
   static const Color colorA = Color(0XFF3F3D56);
   static const Color colorB = Color(0XFFEA251F);
   static const Color colorC = Color(0XFFD4C8C8);
+  static const Color colorD = Color.fromARGB(255, 247, 246, 246);
 }

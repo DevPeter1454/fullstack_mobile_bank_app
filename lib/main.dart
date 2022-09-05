@@ -5,6 +5,7 @@ import 'package:frontend/UI/dashboard.dart';
 import 'package:frontend/UI/main_page.dart';
 import 'package:frontend/UI/services/transfer.dart';
 import 'package:frontend/UI/splash.dart';
+import 'package:frontend/constants/constants.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,9 +21,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // primarySwatch: ,
+        scaffoldBackgroundColor: MyColors.colorC,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: MyColors.colorD,
+          elevation: 0,
+        ),
       ),
       home : const Splash(),
+    
       debugShowCheckedModeBanner: false,
       routes: {
         '/signup': (context) => const Signup(),
