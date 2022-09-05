@@ -4,6 +4,7 @@ import 'package:frontend/Auth/signup.dart';
 import 'package:frontend/UI/dashboard.dart';
 import 'package:frontend/UI/main_page.dart';
 import 'package:frontend/UI/services/transfer.dart';
+import 'package:frontend/UI/splash.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,10 +22,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
+      home : const Splash(),
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => const Signup(),
+        '/signup': (context) => const Signup(),
         '/signin': (context) =>  const Siginin(),
         // '/dashboard': (context) => const MainPage(),
         '/transfer': (context) => const Transfer(),

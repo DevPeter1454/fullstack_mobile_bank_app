@@ -7,7 +7,8 @@ import 'dart:convert';
 class Auth {
   signUp(user) async {
     // var url = Uri.https('http://localhost:5000', '/');
-    var url = Uri.parse('https://litcon-bank.herokuapp.com/user');
+    try{
+      var url = Uri.parse('https://litcon-bank.herokuapp.com/user');
     var signUp = Uri.parse('https://litcon-bank.herokuapp.com/user/signup');
     http.Response response = await http.get(url);
     print(json.decode(response.body));
@@ -24,10 +25,14 @@ class Auth {
     http.Response data = await http.post(signUp, body: userData);
     print(json.decode(data.body));
     return json.decode(data.body);
+    } catch(e){
+      print(e);
+    }
   }
 
   signin(user) async {
-    var url = Uri.parse('https://litcon-bank.herokuapp.com/user/signin');
+    try{
+      var url = Uri.parse('https://litcon-bank.herokuapp.com/user/signin');
     dynamic userData = {
       'email': user['email'],
       'password': user['password'],
@@ -36,10 +41,14 @@ class Auth {
     http.Response response = await http.post(url, body: userData);
     print(json.decode(response.body));
     return json.decode(response.body);
+    } catch(e){
+      print(e);
+    }
   }
 
   fundAccount(email, amount) async {
-    var url = Uri.parse('https://litcon-bank.herokuapp.com/user/pay/fund');
+   try{
+     var url = Uri.parse('https://litcon-bank.herokuapp.com/user/pay/fund');
     dynamic userData = {
       'email': email,
       'amount': amount,
@@ -48,30 +57,42 @@ class Auth {
     http.Response response = await http.post(url, body: userData);
     print(json.decode(response.body));
     return json.decode(response.body);
+   } catch(e){
+     print(e);
+   }
   }
 
   getUserRecord(email) async {
-    var url = Uri.parse('https://litcon-bank.herokuapp.com/user/getUser');
+    try{
+      var url = Uri.parse('https://litcon-bank.herokuapp.com/user/getUser');
     dynamic userData = {
       'email': email,
     };
     http.Response response = await http.post(url, body: userData);
     print(json.decode(response.body));
     return json.decode(response.body);
+    }catch(e){
+      print(e);
+    }
   }
 
   uploadImage(img) async {
-    var url = Uri.parse('https://litcon-bank.herokuapp.com/user/upload');
+    try{
+      var url = Uri.parse('https://litcon-bank.herokuapp.com/user/upload');
     dynamic body = {
       'image': img,
     };
     http.Response response = await http.post(url, body: body);
     print(json.decode(response.body));
     return json.decode(response.body);
+    } catch(e){
+      print(e);
+    }
   }
 
   transfer(senderAccount, receiverAccount, amount)async{
-    var url = Uri.parse('https://litcon-bank.herokuapp.com/user/transfer');
+    try{
+      var url = Uri.parse('https://litcon-bank.herokuapp.com/user/transfer');
     dynamic body = {
       'senderAccount': senderAccount.toString(),
       'recieverAccount': receiverAccount.toString(),
@@ -84,20 +105,31 @@ class Auth {
     http.Response response = await http.post(url, body: body);
     print(json.decode(response.body));
     return json.decode(response.body);
+    } catch(e){
+      print(e);
+    }
   }
 
   getTransferRecipient(accountNumber)async{
-    var url = Uri.parse('https://litcon-bank.herokuapp.com/user/transfer/recipients/$accountNumber');
+    try{
+      var url = Uri.parse('https://litcon-bank.herokuapp.com/user/transfer/recipients/$accountNumber');
     http.Response response = await http.get(url);
     print(json.decode(response.body));
     return json.decode(response.body);
+    }catch (e){
+      print(e);
+    }
   }
 
   getTransactions(accountNumber)async{
-    var url = Uri.parse('https://litcon-bank.herokuapp.com/user/get/transactions/$accountNumber/$accountNumber');
+    try{
+      var url = Uri.parse('https://litcon-bank.herokuapp.com/user/get/transactions/$accountNumber/$accountNumber');
     http.Response response = await http.get(url);
     // print(json.decode(response.body));
     return json.decode(response.body);
+    } catch(e){
+      print(e);
+    }
   }
 }
 
