@@ -69,7 +69,7 @@ class _SignupState extends State<Signup> {
     return loading
         ? Loading()
         : Scaffold(
-            backgroundColor: const Color(0XFF2C7AE2),
+            backgroundColor: MyColors.colorB,
             body: SingleChildScrollView(
               child: Column(
                 children: <Widget>[

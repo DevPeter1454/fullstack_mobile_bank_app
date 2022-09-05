@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:frontend/constants/constants.dart';
+
 
 class OnBoard extends StatefulWidget {
   const OnBoard({Key? key}) : super(key: key);
@@ -19,8 +21,8 @@ class _OnBoardState extends State<OnBoard> {
     'https://i.ibb.co/H7rSfzq/Untitled-design-5.png',
     'https://i.ibb.co/ScdH1d8/Untitled-design-3.png',
   ];
-  Color colorA = const Color(0XFF3F3D56);
-  Color colorB = const Color(0XFFEA251F);
+  Color colorA = MyColors.colorA;
+  Color colorB = MyColors.colorB;
 
   @override
   void initState() {
@@ -35,7 +37,7 @@ class _OnBoardState extends State<OnBoard> {
         Container(
             height: MediaQuery.of(context).size.height,
             width: double.infinity,
-            color: const Color(0XFFD4C8C8),
+            color: MyColors.colorC,
             child: CarouselSlider.builder(
                 carouselController: controller,
                 itemCount: images.length,
@@ -67,8 +69,8 @@ class _OnBoardState extends State<OnBoard> {
               activeIndex: activeIndex,
               count: 3,
               effect: const ExpandingDotsEffect(
-                dotColor: Color(0XFF3F3D56),
-                activeDotColor: Color(0XFFEA251F),
+                dotColor: MyColors.colorA,
+                activeDotColor: MyColors.colorB,
                 dotHeight: 8,
                 dotWidth: 8,
               ),
@@ -97,7 +99,6 @@ class _OnBoardState extends State<OnBoard> {
         ),
         Positioned(
           left: width / 2 - 100,
-          // right: width / 2,
           bottom: 60,
           child: ElevatedButton(
             onPressed: () {
